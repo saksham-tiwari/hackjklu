@@ -15,7 +15,7 @@ const Forgot = () => {
     const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         dispatch(setLoader())
-        e.preventDefault();
+        // e.preventDefault();
         localStorage.setItem("forgot",1);
         let obj = {
             "username":data.email

@@ -167,7 +167,7 @@ const Details = () => {
                 {...register("mobile", {
                   required: "A mozambican mobile number is required",
                   pattern: {
-                    value: /^[8][0-9]{9}$/i,
+                    value: /^[8][0-9]{8}$/i,
                     message: "This is not a valid mobile number",
                   },
                 })}

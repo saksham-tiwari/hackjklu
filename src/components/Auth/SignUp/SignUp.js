@@ -37,7 +37,7 @@ const SignUp = () => {
         dispatch(UnsetLoader());
         console.log(error);
       });
-    navigate("/otp");
+    navigate("/detail");
   };
   const [toggle, setToggle] = useState(false);
   const [toggle1, setToggle1] = useState(false);
