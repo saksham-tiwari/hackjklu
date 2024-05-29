@@ -35,6 +35,7 @@ const Login = () => {
           localStorage.setItem("access", res.data.access_token);
           localStorage.setItem("access", res.data.refresh_token);
           localStorage.setItem("userid", res.data._id);
+          localStorage.setItem("email", data.email);
 
           // navigate("/");
           // console.log(obj);

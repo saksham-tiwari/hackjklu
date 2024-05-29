@@ -25,6 +25,7 @@ const Otp = () => {
     }
     const handleClick = () => {
         setMinutes(1);
+        AuthService.resendotp()
     }
     const navigate = useNavigate();
     useEffect(() => {

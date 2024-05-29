@@ -17,6 +17,7 @@ import { allQueues, getSingle, joinQueue } from '../../../redux/actions/LayoutAc
 import axios from 'axios'
 import Url from '../../../services/BaseUrl'
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
+import {sentEmail} from './../../../services/Email.js'
 
 const StorePage = () => {
    const [loc,setLoc]= useState({
@@ -153,6 +154,7 @@ const StorePage = () => {
         dispatch(joinQueue(location.pathname.split("/")[2]))
         .then(()=>{
           navigate("/")
+          sentEmail()
         })
 
       } else{
