@@ -11,7 +11,6 @@
     left: 45px;
     display: flex;
     align-items: center;
-    width: 10vw;
     justify-content: space-evenly;
     cursor: pointer;
 }
@@ -28,6 +27,7 @@
     justify-content: space-around;
 }
 .logo-image > .image{
-    width: 79%;
-    height: 100%;
+    width: 30px;
+    height: auto;
+    margin-right: 1rem;
 }
