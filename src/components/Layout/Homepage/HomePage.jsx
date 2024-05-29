@@ -17,8 +17,6 @@ const HomePage = () => {
     long: 0
  });
 
- const navigate = useNavigate
-
 useEffect(()=>{
   let user = localStorage.getItem("userid")
   console.log(user);

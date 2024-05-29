@@ -45,6 +45,8 @@ const Login = () => {
       .catch((e) => {
         dispatch(UnsetLoader());
 
+        window.alert(e.response.data.message);
+
         console.log(e);
       });
   };

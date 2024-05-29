@@ -64,9 +64,10 @@ const Card = (props) => {
       setTimer(timer=>timer-1)
     },1000)
   },[])
+
   return (
     <div className={styles.card}>
-        <h1 className={styles.head}>{props.n.name}</h1>
+        <h1 className={styles.head}>{ props.n.name.length > 8 ? props.n.name.slice(0, 7) + "..." : props.n.name }</h1>
         <div style={{display:"flex", width:"100%", justifyContent:"center", marginTop:"8px"}}>
             <div>
               <img src={img1} alt="counters" className={styles.icons}/><div className={styles.roundNo}>{props.n.counter}</div>
@@ -78,7 +79,7 @@ const Card = (props) => {
             </div>
         </div>
         <div style={{textAlign:"center", marginTop:"8px"}}>
-          <LocationOnIcon fontSize='small' style={{position:"relative",top:"4px", color:"#192839"}}/> Address of the store here...
+          <LocationOnIcon fontSize='small' style={{position:"relative",top:"4px", color:"#192839"}}/> { props.n.Address.length > 20 ? props.n.Address.slice(0, 20) + "..." : props.n.Address }
         </div>
         <div style={{textAlign:"center", marginTop:"4px", color:"#304D6D", fontSize:"12px"}}>
           <TimerIcon fontSize='small' style={{position:"relative",top:"6px", color:"#192839"}}/> Waiting Time

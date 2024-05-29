@@ -130,10 +130,17 @@
 }
 .cards{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-wrap: wrap;
 }
+
+@media (max-width: 680px) {
+    .cards {
+        justify-content: center;
+    }
+}
+
 .listElement{
     width: 95%;
     margin-left: 2.5%;
