@@ -1,3 +1,72 @@
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.login-container .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login-container .logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container .login-logo {
+    max-width: 4rem;
+}
+
+.login-container .text {
+    text-align: center;
+}
+
+.login-container .radio-button {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.login-container .form-container input {
+    width: 100%;
+    margin: .5rem 0;
+}
+
+.login-container .submit {
+    margin: 1rem 0;
+    border: none;
+    width: 100%;
+    background: #E60000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.login-container .alert-message {
+    color: #E60000;
+}
+
+.login-container .clickable {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-container .image {
+    background: url("../../Assets/login-image.webp") no-repeat;
+    background-size: cover;
+}
+
 .login-heading {
     height: 47vh;
     width: 34vw;
@@ -27,14 +96,14 @@
     color: #41D3BD;
     text-decoration: underline;
 }
-.radio-button{
+/* .radio-button{
     display: flex;
     justify-content: space-between;
     width: 20vw;
     position: absolute;
     top: 18%;
     left: 29%;
-}
+} */
 #field-store,#field-customer{
     position: relative;
     left: -5%;
