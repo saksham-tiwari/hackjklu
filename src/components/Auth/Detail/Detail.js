@@ -51,6 +51,7 @@ const Details = () => {
 
 
     dispatch(actionCreators.userName(data.fullname));
+    localStorage.setItem("fullname", data.fullname)
     dispatch(actionCreators.userMobile(data.mobile));
     dispatch(actionCreators.userGender(data.aopt));
     dispatch(actionCreators.userType(role));
