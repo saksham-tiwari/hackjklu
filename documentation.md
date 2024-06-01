@@ -32,3 +32,14 @@ The signup was changed to look like the [Vodacom's login page](https://meuportal
 
 ### Description
 The forgot password page was changed to look like the [Vodacom's login page](https://meuportal.vm.co.mz/).
+
+## Home page
+
+### Before
+![alt text](<.github/Screen Shot 2024-06-01 at 12.12.13.png>)
+
+### Now
+![alt text](<.github/Screen Shot 2024-06-01 at 12.12.35.png>)
+
+### Description
+The home page has been updated to enhance responsiveness and ensure the search input functionality works properly.
