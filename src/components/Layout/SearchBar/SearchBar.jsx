@@ -4,14 +4,20 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
     <form className={styles.topSearch}>
       <div className={styles.one}>
         <div className={styles.iconInput}>
           <SearchIcon />
         </div>
-        <input placeholder="Search for Stores, Bus Stops and More....." />
+        <input 
+          placeholder="Search for Stores, Bus Stops and More....." 
+          value={ props.searchedTermForNearby }
+          onChange={ (e) => {
+            props.setSearchedTermForNearby(e.target.value);
+          } }
+        />
       </div>
 
       <div className={styles.two}>
