@@ -4,13 +4,16 @@
     margin-left: 2.5%;
     margin-top: 10px;
 }
+
 .mainHead{
     margin-left: 2.5%;
     font-size: 44px;
 }
+
 .one{
     flex: 2;
 }
+
 .two,.three{
     flex: 1;
     /* font-size: 18px;
@@ -21,38 +24,45 @@
     border: none;
     background: rgba(48, 77, 109, 0.1); */
 }
+
 .topSearch input{
-    width: 95%;
     font-size: 18px;
-    margin-right: 10px;
-    height: 30px;
-    padding: 5px;
-    border-radius: 20px;
-    padding-left: 35px;
     border: none;
-    background: rgba(48, 77, 109, 0.1);
-    
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    outline: none;
 }
+
+.topSearch > div {
+    border-radius: 20px;
+    width: 95%;
+    margin-right: 10px;
+    padding: 20px;
+    background: rgba(48, 77, 109, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 ::placeholder{
     color: #192839;
 }
 
-.iconInput{
-    background: #d9dfe4;
-    border-radius: 50%;
+.iconInput {
     width: 30px;
     height: 30px;
-    position: relative;
     font-size: 50px;
-    top: -30px;
     color: #192839;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .iconInput svg{
     display: block;
-    position: relative;
-    top: 3px;
-    left: 3px;
 }
+
 .card{
     background: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);

@@ -7,25 +7,27 @@ import SortIcon from '@mui/icons-material/Sort';
 const SearchBar = () => {
   return (
     <form className={styles.topSearch}>
-            <div className={styles.one}>
-                <input placeholder="Search for Stores, Bus Stops and More....."/>
-                <div className={styles.iconInput}>
-                <SearchIcon/>
-                </div>
-            </div>
-            <div className={styles.two}>
-                <input placeholder="Apply filters..."/>
-                <div className={styles.iconInput}>
-                <FilterAltIcon/>
-                </div>
-            </div>
-            <div className={styles.three}>
-                <input placeholder="Sort By"/>
-                <div className={styles.iconInput}>
-                <SortIcon/>
-                </div>
-            </div>
-        </form>
+      <div className={styles.one}>
+        <div className={styles.iconInput}>
+          <SearchIcon />
+        </div>
+        <input placeholder="Search for Stores, Bus Stops and More....." />
+      </div>
+
+      <div className={styles.two}>
+        <div className={styles.iconInput}>
+          <FilterAltIcon />
+        </div>
+        <input placeholder="Apply filters..." />
+      </div>
+
+      <div className={styles.three}>
+        <div className={styles.iconInput}>
+          <SortIcon />
+        </div>
+        <input placeholder="Sort By" />
+      </div>
+    </form>
   )
 }
 
