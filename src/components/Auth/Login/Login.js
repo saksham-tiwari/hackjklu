@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import vmLogo from '../../Assets/vodacom-logo.png'
-
-import Navbar from "../../Layout/Navbar/Navbar";
 import { useForm } from "react-hook-form";
-import image from "../../Assets/pic.svg";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import AuthService from "../../../services/API";
@@ -15,7 +12,6 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     mode: "onTouched",
   });
@@ -66,8 +62,7 @@ const Login = () => {
   const handleClicked = () => {
     navigate("/signup");
   };
-
-  const [toggle, setToggle] = useState(false);
+  
   return (
     <div className="login-container">
       <div className="login-form">
@@ -133,33 +128,13 @@ const Login = () => {
 
           <div className="form-container">
             <div className="">
-              <i id="passlock" class="fa fa-eye" aria-hidden="true"></i>
-              {toggle ? (
-                <i
-                  id="passlock"
-                  class="fa fa-eye-slash"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setToggle(!toggle);
-                  }}
-                ></i>
-              ) : (
-                <i
-                  id="passlock"
-                  class="fa fa-eye"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setToggle(!toggle);
-                  }}
-                ></i>
-              )}
               <input
                 className="input-field"
-                type={toggle ? "text" : "password"}
+                type={"password"}
                 placeholder="Enter Password"
                 name="password"
                 {...register("password", {
-                  required: "password is required",
+                  required: "Password is required",
                   minLength: {
                     value: 8,
                     message: "Password must be more than 8 characters",
