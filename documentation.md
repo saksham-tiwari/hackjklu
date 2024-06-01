@@ -10,3 +10,14 @@
 
 ### Description
 The login was changed to look like the [Vodacom's login page](https://meuportal.vm.co.mz/).
+
+## Signup Screen
+
+### Before
+![alt text](<.github/Screen Shot 2024-06-01 at 11.06.25.png>)
+
+### Now
+![alt text](<.github/Screen Shot 2024-06-01 at 11.07.36.png>)
+
+### Description
+The signup was changed to look like the [Vodacom's login page](https://meuportal.vm.co.mz/).
