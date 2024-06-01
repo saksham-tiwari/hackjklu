@@ -1,5 +1,5 @@
 import React from 'react'
-import illustrate from '../../Assets/logo1.svg'
+import illustrate from '../../Assets/vodacom-logo.png'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
@@ -22,7 +22,7 @@ const logoClick = () =>{
                     <img className="image" src={illustrate} alt="logo" />
                 </div>
                 <div className='logo-head'>
-                    <p>Qwait?</p>
+                    <p>Vodacom</p>
                 </div>
 
             </div>
