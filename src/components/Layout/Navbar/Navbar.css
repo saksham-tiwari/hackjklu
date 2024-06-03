@@ -1,33 +1,35 @@
-.Navbar{
-    background: #192839;
+.Navbar {
+    background: #ffffff;
     width: 100vw;
-    height: 56px;
-    position: relative;
+    padding: 1rem 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.logo{
-    position: absolute;
-    left: 45px;
+
+.logo {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     cursor: pointer;
 }
+
 .logo-head > p{
-    color: #FFFFFF;
+    color: #192839;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2em;
 }
-.Nav-menu{
-    position: absolute;
-    right: 36px;
+
+.Nav-menu {
     display: flex;
-    width: 8%;
-    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
 }
+
 .logo-image > .image{
-    width: 30px;
+    width: 36px;
     height: auto;
     margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

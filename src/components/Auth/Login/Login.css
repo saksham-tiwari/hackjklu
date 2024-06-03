@@ -1,70 +1,74 @@
-.login-heading {
-    height: 47vh;
-    width: 34vw;
-    position: relative;
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.login-container .login-form {
     display: flex;
-    align-items: center;
-    left: -3%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
 }
-.login-heading > p{
-    font-family: 'Source Sans Pro';
-    color: #192839;
-    font-size: 5em;
-    font-weight: 900; 
+
+.login-container .logo-container {
+    display: flex;
+    justify-content: center;
 }
-.login-heading > p > span{
-    color: #41D3BD;
+
+.login-container .login-logo {
+    max-width: 4rem;
 }
-.signup-head{
-    position: absolute;
-    top: 108%;
-    left: 31.5%;
-    font-family: 'Source Sans Pro';
-    font-size: 1.3em;
+
+.login-container .text {
+    text-align: center;
 }
-.signup-head > span{
+
+.login-container .radio-button {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.login-container .form-container input {
+    width: 100%;
+    margin: .5rem 0;
+}
+
+.login-container .submit {
+    margin: 1rem 0;
+    border: none;
+    width: 100%;
+    background: #E60000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    color: white;
     cursor: pointer;
-    color: #41D3BD;
+}
+
+.login-container .alert-message {
+    color: #E60000;
+}
+
+.login-container .clickable {
     text-decoration: underline;
+    cursor: pointer;
 }
-.radio-button{
-    display: flex;
-    justify-content: space-between;
-    width: 20vw;
-    position: absolute;
-    top: 18%;
-    left: 29%;
+
+.login-container .image {
+    background: url("../../Assets/login-image.webp") no-repeat;
+    background-size: cover;
 }
-#field-store,#field-customer{
+
+#field-store, #field-customer{
     position: relative;
     left: -5%;
     cursor: pointer;
-}
-.label-data{
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    color: #2b4057f3;
-    font-size: 1.4em;
-}
-.emails, .passwords {
-    position: absolute;
-    top: 30%;
-    left: 28%;
-}
-.passwords {
-    top: 54%;
-}
-.forgot{
-    position: absolute;
-    top: 78%;
-    left: 29%;
-}
-.forgot > u{
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    cursor: pointer;
-    color: #41D3BD;
-    font-size: 1.3em;
 }

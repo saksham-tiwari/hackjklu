@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../../Layout/Navbar/Navbar";
+import React from "react";
+import vmLogo from '../../Assets/vodacom-logo.png'
 import { useForm } from "react-hook-form";
-import image from "../../Assets/pic.svg";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import AuthService from "../../../services/API";
 import { useDispatch } from "react-redux";
 import { setLoader, UnsetLoader } from "../../../redux/actions/LoaderActions";
+
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     mode: "onTouched",
   });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const onSubmit = (data, e) => {
     dispatch(setLoader());
     e.preventDefault();
@@ -45,30 +46,37 @@ const Login = () => {
       .catch((e) => {
         dispatch(UnsetLoader());
 
-        window.alert(e.response.data.message);
+        if (e.response.data) {
+          window.alert(e.response.data.message)
+        } else {
+          window.alert("Something went wrong!");
+        }
 
         console.log(e);
       });
   };
+
   const handleClick = () => {
     navigate("/forgot");
   };
+
   const handleClicked = () => {
     navigate("/signup");
   };
-  const [toggle, setToggle] = useState(false);
+  
   return (
-    <div className="Signup-Page">
-      <div className="Navbar-Signup">
-        <Navbar />
-      </div>
-      <div className="middle-portion">
-        <div className="login-heading">
-          <p>
-            Welcome Back <span className="ques">!</span>
-          </p>
+    <div className="login-container">
+      <div className="login-form">
+        <div className="logo-container">
+          <img className="login-logo" src={ vmLogo } alt="logo" />
         </div>
-        <form className="input-login" onSubmit={handleSubmit(onSubmit)}>
+
+        <div className="text">
+          <h2>Queue Managemnet</h2>
+          <p>Welcome back! Enter your account details</p>
+        </div>
+        
+        <form onSubmit={handleSubmit(onSubmit)} >
           <div className="radio-button">
             <div className="customer-radio">
               <label className="label-data" htmlFor="field-customer">
@@ -82,6 +90,7 @@ const Login = () => {
                 Customer
               </label>
             </div>
+
             <div className="store-radio">
               <label className="label-data" htmlFor="field-store">
                 <input
@@ -94,10 +103,12 @@ const Login = () => {
                 Store
               </label>
             </div>
-            <p className="alerts">{errors.aopt?.message}</p>
+
+            <p className="alert-message">{errors.aopt?.message}</p>
           </div>
+
           <div className="form-container">
-            <div className="emails">
+            <div className="">
               <input
                 className="input-field"
                 type="email"
@@ -112,38 +123,19 @@ const Login = () => {
                   },
                 })}
               ></input>
-              <p className="alerts">{errors.email?.message}</p>
+              <p className="alert-message">{errors.email?.message}</p>
             </div>
           </div>
+
           <div className="form-container">
-            <div className="passwords">
-              <i id="passlock" class="fa fa-eye" aria-hidden="true"></i>
-              {toggle ? (
-                <i
-                  id="passlock"
-                  class="fa fa-eye-slash"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setToggle(!toggle);
-                  }}
-                ></i>
-              ) : (
-                <i
-                  id="passlock"
-                  class="fa fa-eye"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setToggle(!toggle);
-                  }}
-                ></i>
-              )}
+            <div className="">
               <input
                 className="input-field"
-                type={toggle ? "text" : "password"}
+                type={"password"}
                 placeholder="Enter Password"
                 name="password"
                 {...register("password", {
-                  required: "password is required",
+                  required: "Password is required",
                   minLength: {
                     value: 8,
                     message: "Password must be more than 8 characters",
@@ -154,23 +146,23 @@ const Login = () => {
                   },
                 })}
               ></input>
-              <p className="alerts">{errors.password?.message}</p>
+              <p className="alert-message">{errors.password?.message}</p>
             </div>
           </div>
-          <p className="forgot" onClick={handleClick}>
-            <u>Forgot password ?</u>
-          </p>
-          <button className="signup-btn" type="submit">
-            Login
-          </button>
-          <p className="signup-head">
-            Create New Account <span onClick={handleClicked}>Signup</span>
-          </p>
+  
+          <div style={{ marginTop: 16 }}>
+            <p className="">
+              <span className="clickable" onClick={handleClick}>Forgot password?</span> or <span className="clickable" onClick={handleClicked}>Create an account</span>
+            </p>
+
+            <button className="submit" type="submit">
+              Login
+            </button>
+          </div>
         </form>
       </div>
-      <div className="queue-img">
-        <img className="pic" src={image} alt="logo" />
-      </div>
+
+      <div className="image"></div>
     </div>
   );
 };

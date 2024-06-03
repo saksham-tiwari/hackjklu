@@ -24,12 +24,10 @@ const Details = () => {
   const navigate = useNavigate();
   const { pass } = useSelector((state) => state.AuthReducer);
 
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState("Customer");
   const [fieldValue, setFieldValue] = useState(null);
   const [preview, setPreview] = useState(photo3);
   const fileRef = useRef(null);
-
-
 
   const onSubmit = (data) => {
     if (role === null) {
@@ -74,7 +72,7 @@ const Details = () => {
                 dispatch(UnsetLoader());
                 console.log(e);
             });
-    };
+  };
 
   const imageHandler = (e) => {
     setFieldValue(e.target.files[0]);
@@ -86,16 +84,14 @@ const Details = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
-//   const fileRef = useRef(null);
+
   if (role) {
     console.log(role);
-  }
+  };
+
   return (
     <div className="Signup-Page">
-      <div className="Navbar-Signup">
-        <Navbar />
-      </div>
-      <div className="middle-portion">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", paddingTop: 16, alignItems: "center" }}>
         <div className="first-portion">
           <div className="detail-heading">
             <p className="heading1">
@@ -114,6 +110,7 @@ const Details = () => {
                 Customer
               </div>
             </div>
+
             <div className="photo2">
               <div className="photo2-img">
                 <img className="pic1" src={photo2} alt="logo" />
@@ -124,6 +121,7 @@ const Details = () => {
             </div>
           </div>
         </div>
+
         <form className="second-portion" onSubmit={handleSubmit(onSubmit)}>
           <div className="upload-user">
             <div className="user-img">
