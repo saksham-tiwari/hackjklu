@@ -64,8 +64,10 @@ const Details = () => {
                 localStorage.setItem("userid", res.data._id);
                 if (obj.role) {
                     navigate("/");
+                    console.log(obj)
                 } else {
                     navigate("/create-store");
+                    console.log(obj)
                 }
             })
             .catch((e) => {

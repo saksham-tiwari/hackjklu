@@ -11,7 +11,7 @@ import homeStyles from "../Homepage/Homepage.module.css";
 import img3 from "../../Assets/img3.png";
 import TimerIcon from "@mui/icons-material/Timer";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import {
   addStoreDetails,
   checkStore,
@@ -34,26 +34,44 @@ const CreateStore = () => {
     lat: 0,
     long: 0,
   });
-  const [storeDetails, setStoreDetails] = useState([]);
+  const [storeDetails, setStoreDetails] = useState({});
 
   let dispatch = useDispatch();
 
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
+
   function showPosition(position) {
     setLoc({ lat: position.coords.latitude, long: position.coords.longitude });
   }
 
-  const funSub = () => {
-    let a = new Array(ctr);
-    for (let i = 0; i < ctr; ++i) a[i] = 0;
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        console.log("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.log("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        console.log("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.log("An unknown error occurred.");
+        break;
+      default:
+        console.log("An unknown error occurred.");
+    }
+  }
 
-    console.log(a);
+  const funSub = () => {
+    let counters = new Array(ctr).fill(0);
+
     console.log(
       strName,
       parseInt(billTime),
@@ -70,19 +88,21 @@ const CreateStore = () => {
         strName,
         parseInt(ctr),
         about,
-        a,
-        a,
-        a,
+        counters,
+        counters,
+        counters,
         parseFloat(loc.lat),
         parseFloat(loc.long)
       )
     )
       .then(() => {
         dispatch(UnsetLoader());
+        message.success("Store details updated successfully");
       })
-      .catch(() => {
-
+      .catch((error) => {
         dispatch(UnsetLoader());
+        message.error("Failed to update store details");
+        console.error(error);
       });
   };
 
@@ -95,24 +115,24 @@ const CreateStore = () => {
     dispatch(checkStore())
       .then((res) => {
         dispatch(UnsetLoader());
-        console.log(storeDetails.name);
-        console.log(res.data);
         setStoreDetails(res.data);
-        console.log(storeDetails);
         setStrName(res.data.name);
         setAbout(res.data.Address);
         setCtr(res.data.counter);
         setLoc({
           lat: res.data.latti,
-          long: res.data.long,
+          long: res.data.longi,
         });
+        setShopCounter(new Array(res.data.counter).fill(0));
+        setCountertime(new Array(res.data.counter).fill(0));
+        setAvgtime(new Array(res.data.counter).fill(0));
       })
       .catch((err) => {
         console.log(err.status);
         dispatch(UnsetLoader());
-        setStoreDetails([]);
+        setStoreDetails({});
       });
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
     <>
@@ -125,7 +145,7 @@ const CreateStore = () => {
         }}
       >
         <div className={styles.box}>
-          <h1>Edit Store Details</h1>
+          <h1>{storeDetails.name ? "Edit Store Details" : "Create Store"}</h1>
           <br />
           <StoreMallDirectoryIcon
             style={{ position: "relative", top: "10px" }}
@@ -137,10 +157,10 @@ const CreateStore = () => {
             onChange={(e) => {
               setStrName(e.target.value);
             }}
-          ></input>
+          />
           <br />
           <select
-            class="form-select"
+            className="form-select"
             aria-label="Default select example"
             style={{
               width: "80%",
@@ -160,14 +180,14 @@ const CreateStore = () => {
             src={img1}
             alt="counters"
             style={{ width: "7%", position: "relative", top: "10px" }}
-          ></img>
+          />
           <input
             placeholder="Number of counters"
             value={ctr}
             onChange={(e) => {
               setCtr(e.target.value);
             }}
-          ></input>
+          />
           <br />
           <LocationOnIcon
             style={{ position: "relative", top: "10px" }}
@@ -184,14 +204,14 @@ const CreateStore = () => {
             src={img2}
             alt="counters"
             style={{ width: "7%", position: "relative", top: "10px" }}
-          ></img>
+          />
           <input
             placeholder="Billing Time"
             value={billTime}
             onChange={(e) => {
               setBillTime(e.target.value);
             }}
-          ></input>
+          />
           <p
             style={{
               fontSize: "14px",
@@ -212,7 +232,7 @@ const CreateStore = () => {
             style={{ width: "39%" }}
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-          ></input>
+          />
           <input
             placeholder="To"
             style={{ width: "39%" }}
@@ -220,7 +240,7 @@ const CreateStore = () => {
             onChange={(e) => {
               setTo(e.target.value);
             }}
-          ></input>
+          />
           <br />
           <InfoIcon
             style={{ position: "relative", top: "-30px" }}
@@ -232,7 +252,7 @@ const CreateStore = () => {
             onChange={(e) => {
               setAbout(e.target.value);
             }}
-          ></textarea>
+          />
           <button
             className={homeStyles.enterButton}
             style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }}

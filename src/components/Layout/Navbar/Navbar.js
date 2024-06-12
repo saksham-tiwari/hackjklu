@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import illustrate from "../../Assets/vodacom-logo.png";
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
+import { FaSignOutAlt, FaQrcode } from "react-icons/fa";
+import { IoMdArrowDropdown } from "react-icons/io";
+import englishFlag from "../../Assets/english-flag.png";
+import portugueseFlag from "../../Assets/portuguese-flag.png";
+import frenchFlag from "../../Assets/french-flag.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [language, setLanguage] = useState("English");
 
   const signingOut = () => {
     localStorage.clear();
@@ -17,6 +23,11 @@ const Navbar = () => {
 
   const logoClick = () => {
     navigate("/");
+  };
+
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    // Add any additional logic for changing the language here
   };
 
   return (
@@ -32,20 +43,32 @@ const Navbar = () => {
       </div>
 
       <div className="Nav-menu">
-        <div className="sign-out" style={{ order: "2" }} onClick={signingOut}>
-          <i
-            class="fa fa-sign-out"
-            aria-hidden="true"
-            style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }}
-          ></i>
+        <div className="qr-code" style={{ order: "1" }} onClick={qrScan}>
+          <FaQrcode style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }} />
         </div>
 
-        <div className="qr-code" style={{ order: "1" }} onClick={qrScan}>
-          <i
-            class="fa fa-qrcode"
-            aria-hidden="true"
-            style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }}
-          ></i>
+        <div className="sign-out" style={{ order: "2" }} onClick={signingOut}>
+          <FaSignOutAlt style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }} />
+        </div>
+
+        <div className="language-dropdown" style={{ order: "3" }}>
+          <div className="dropdown">
+            <button className="dropbtn">
+              <img src={language === "English" ? englishFlag : language === "Portuguese" ? portugueseFlag : frenchFlag} alt={language} className="flag" />
+              {language} <IoMdArrowDropdown />
+            </button>
+            <div className="dropdown-content">
+              <div onClick={() => changeLanguage("English")}>
+                <img src={englishFlag} alt="English" className="flag" /> English
+              </div>
+              <div onClick={() => changeLanguage("Portuguese")}>
+                <img src={portugueseFlag} alt="Portuguese" className="flag" /> Portuguese
+              </div>
+              <div onClick={() => changeLanguage("French")}>
+                <img src={frenchFlag} alt="French" className="flag" /> French
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
