@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="logo-image">
           <img className="image" src={illustrate} alt="logo" />
         </div>
-        
+
         <div className="logo-head">
           <p>Vodacom</p>
         </div>
@@ -44,27 +44,42 @@ const Navbar = () => {
 
       <div className="Nav-menu">
         <div className="qr-code" style={{ order: "1" }} onClick={qrScan}>
-          <FaQrcode style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }} />
+          <FaQrcode
+            style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }}
+          />
         </div>
 
         <div className="sign-out" style={{ order: "2" }} onClick={signingOut}>
-          <FaSignOutAlt style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }} />
+          <FaSignOutAlt
+            style={{ color: "#192839", fontSize: "2.2em", cursor: "pointer" }}
+          />
         </div>
 
         <div className="language-dropdown" style={{ order: "3" }}>
           <div className="dropdown">
             <button className="dropbtn">
-              <img src={language === "English" ? englishFlag : language === "Portuguese" ? portugueseFlag : frenchFlag} alt={language} className="flag" />
+              <img
+                src={
+                  language === "English"
+                    ? englishFlag
+                    : language === "Portuguese"
+                    ? portugueseFlag
+                    : frenchFlag
+                }
+                alt={language}
+                className="flag"
+              />
               {language} <IoMdArrowDropdown />
             </button>
             <div className="dropdown-content">
-              <div onClick={() => changeLanguage("English")}>
+              <div onClick={() => changeLanguage("EN")}>
                 <img src={englishFlag} alt="English" className="flag" /> English
               </div>
-              <div onClick={() => changeLanguage("Portuguese")}>
-                <img src={portugueseFlag} alt="Portuguese" className="flag" /> Portuguese
+              <div onClick={() => changeLanguage("PT")}>
+                <img src={portugueseFlag} alt="Portuguese" className="flag" />{" "}
+                Portuguese
               </div>
-              <div onClick={() => changeLanguage("French")}>
+              <div onClick={() => changeLanguage("FR")}>
                 <img src={frenchFlag} alt="French" className="flag" /> French
               </div>
             </div>
